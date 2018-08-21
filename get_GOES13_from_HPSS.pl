@@ -14,10 +14,8 @@ $HPSS_file = '"${sat_name}.${yyyy}${day_of_year}.${hh}${mn}.gz"';
 $tmp_file = ".$$.stdout.txt";
 
 $yyyy = 2017;
-$start_day = 7;
-$end_day = 7;
-#$start_day = <DAYIN>;
-#$end_day = $start_day + 6;
+$start_day = <DAYIN>;
+$end_day = $start_day + 6;
 
 close (DAYIN);
 
@@ -37,8 +35,6 @@ foreach $data_res (@data_res) {
 
         mkdir ("/d1/lave/GOES13/images/$yyyy/$mmdd", 0755) unless (-d "/d1/lave/GOES13/images/$yyyy/$mmdd");
         mkdir ("/d1/lave/GOES13/netcdf/$yyyy/$mmdd", 0755) unless (-d "/d1/lave/GOES13/netcdf/$yyyy/$mmdd");
-#        rename ("$file1", "$file2");
-#        rename ("$file1", "$target_directory");
 
         grep($_=eval, $list_this_dir=$HPSS_dir);
 
@@ -77,9 +73,9 @@ foreach $data_res (@data_res) {
     }
 }
 
-#$end_day++;
-#open (DAYOUT, ">./daycounter.txt") || warn "Cannot open daycounter as output\n";
+$end_day++;
+open (DAYOUT, ">./daycounter.txt") || warn "Cannot open daycounter as output\n";
 
-#print DAYOUT "$end_day";
+print DAYOUT "$end_day";
 
 close (DAYOUT);
